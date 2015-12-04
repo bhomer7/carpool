@@ -18,10 +18,13 @@ gulp.task('test:unit', (cb) => {
         // cover all source files
         'src/**/*.js{,x}',
         // exclude test files from coverage
-        '!**/_{unit,integration}_/**/*_test.js{,x}',
+        '!**/_{browser,unit,integration}_/**/*_test.js{,x}',
     ])
         .pipe(istanbul({
-            instrumenter: Instrumenter
+            instrumenter: Instrumenter,
+            // istanbul does not include files that are not required in the coverage report.
+            // this will include them by default.
+            includeUntested: true
         }))
         .pipe(istanbul.hookRequire())
         .on('finish', function() {
@@ -45,10 +48,13 @@ gulp.task('test:integration', (cb) => {
         // cover all source files
         'src/**/*.js{,x}',
         // exclude test files from coverage
-        '!**/_{unit,integration}_/**/*_test.js{,x}',
+        '!**/_{browser,unit,integration}_/**/*_test.js{,x}',
     ])
         .pipe(istanbul({
-            instrumenter: Instrumenter
+            instrumenter: Instrumenter,
+            // istanbul does not include files that are not required in the coverage report.
+            // this will include them by default.
+            includeUntested: true
         }))
         .pipe(istanbul.hookRequire())
         .on('finish', function() {

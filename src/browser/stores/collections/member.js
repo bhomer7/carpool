@@ -1,4 +1,5 @@
 import remove from 'lodash/array/remove';
+import MemberRecord from './records/member';
 
 class MemberCollection {
     constructor() {
@@ -9,6 +10,26 @@ class MemberCollection {
         // key: event id
         // value: array of members who need rides for that event
         this.membersWhoNeedRides = {};
+    }
+
+    get(id) {
+        let member = this.members[id];
+
+        if (!member) {
+            throw new Error('No member found with this id: ' + id);
+        }
+
+        return member;
+    }
+
+    getAll() {
+        return this.members;
+    }
+
+    setMembers(rawMembers) {
+        rawMembers.forEach(rawMember => {
+            this.members[rawMember.id] = new MemberRecord(rawMember);
+        });
     }
 
     insert(eventId, membersWhoNeedRides) {
@@ -37,23 +58,11 @@ class MemberCollection {
         });
     }
 
-    getAll() {
-        return this.members;
-    }
-
-    get(id){
-        return this.members[id];
-    }
-
     getMembersWhoNeedRides(eventId) {
         return this.membersWhoNeedRides[eventId];
     }
 
-    setMembers(rawMembers) {
-        rawMembers.forEach(rawMember => {
-            this.members[rawMember.id] = rawMember;
-        });
-    }
+
 }
 
 export default MemberCollection;

@@ -7,8 +7,6 @@ describe('rides queries', function() {
     beforeEach(function(done) {
         let _this = this;
 
-
-
         Promise.all([
             organizationsQueries.create({name: 'test'}),
             usersQueries.create({name: 'test', address: 'random'})

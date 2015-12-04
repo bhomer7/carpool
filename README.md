@@ -7,6 +7,7 @@ carpool
 1. `npm install`
 2. `nvm use 0.12.0`
 3. Open new shell and start postgres: `postgres -D /usr/local/var/postgres`
+4. Seed the database: `gulp db:reset`
 4. Open new shell and start the web server: `gulp`
 5. Go to http://local.carpool.com:3000
 
@@ -32,7 +33,7 @@ carpool
 1. `brew install postgres`
 2. `postgres -D /usr/local/var/postgres`
 3. In a new shell, start psql `psql --username=<USERNAME> -d template1` // use unix username
-4. Type `create database <USERNAME>`
+4. Type `create database <USERNAME>;`
 5. Exit psql (Ctrl-D on Mac).  If you do not exit psql, you will get an error about multiple users accessing the database when you try to run the setup scripts.
 
 
@@ -68,4 +69,7 @@ gulp test:browser
 * [Flux introduction](https://facebook.github.io/flux/docs/overview.html)
 * [Flux tutorial](https://facebook.github.io/flux/docs/todo-list.html#content)
 * [React Debugger](https://facebook.github.io/react/blog/2015/08/03/new-react-devtools-beta.html)
+
+### Keep in Mind
+* [Side Project Launch Checklist](http://keepwomen.com/static_pages/checklist_tool)
 
